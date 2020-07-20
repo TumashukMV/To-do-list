@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <title>Calories calculator</title>
+    <header>
+        <h1 id="header" align="center"><font size="6" color="dodgerblue" face="arial">Calculator of </font><font size="6" color="red" face="arial">calories and prices</font>
+    </header>
+</head>
+<body>
+    <form>
+  <div id = "border">
+    <div class = "radio_buttons__container">
+        <p align="center">Select your box:</p>
+        <p align="center">Small
+        <input type="radio" name = "size" id = "small" value = "small" checked>
+        </p>
+        <p align="center">Large
+        <input type="radio" name = "size" id = "large" value = "large" checked>
+        </p>
+    </div>
+
+    <div class = "checkbox_container">
+        <p align="center">Select what kind of meat you want:</p>
+        <p align="center">Pork
+            <input type = "checkbox" name = "add" id = "pig" value="pig">
+        </p>
+        <p align="center">Beef
+            <input type = "checkbox" name = "add" id = "meat" value="meat">
+        </p>
+        <p align="center">Chicken
+            <input type = "checkbox" name = "add" id = "chicken" value="chicken">
+        </p>
+            
+        <p align="center">Vegetables
+            <input type="checkbox" name="add" id="vegetables" value ="vegetables">
+        </p>
+    </div>
+    <div>
+        <p align = "center">
+            Total price:
+        </p>
+        <p align = "center">Do you want to add anything?</p>
+    <div class="input_checkbox">  
+        <p align="center">Сrackers 
+            <input type="checkbox" name="add" id="crackers" value="crackers">
+        </p>
+        <p align = "center">Extra sauce
+            <input type="checkbox" name="add" id ="extra_sauce" value="extra_sauce">    
+        </p>   
+    </div>
+    </div>
+        <input type="submit" id = "calculate" value="Calculate">
+        </form>
+    <!-- CALCULATOR end -->
+    <!-- TIPS start -->
+    <div id="total">
+        <span id="prise">0.00</span><sup>$</sup> <br>
+        <span id="calories">00</span> <small>calories</small>
+    </div>
+
+    <script src = "app.js"></script>
+</body>
+</html>
