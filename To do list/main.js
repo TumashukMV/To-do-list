@@ -22,7 +22,7 @@
     ulCall();
     callPencil();
     //Delete todo if delete span clicked
-    function deleteTodos(){
+    function deleteTodo(){
         for(let span of spans){
             span.addEventListener('click', function(){
                 span.parentElement.remove();
@@ -72,3 +72,5 @@ clearBtn.addEventListener('click', function(){
 saveBtn.addEventListener('click', function(){
     localStorage.setItem('todoList', ul.innerHTML);
 })*/
+deleteTodo();
+loadTodos();

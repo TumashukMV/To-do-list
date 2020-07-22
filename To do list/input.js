@@ -1,3 +1,13 @@
+var spans = document.getElementsByTagName("span");
+
+function deleteTodo(){
+    for(let span of spans){
+        span.addEventListener('click', function(){
+            span.parentElement.remove();
+        })
+    }
+}
+
 function inputCall(){
     var ul = document.querySelector("ul");
     var input = document.querySelector("input[type='text']");
@@ -14,6 +24,8 @@ function inputCall(){
             icon.classList.add('fas', 'fa-trash-alt');
             spanElement.append(icon);
             ul.appendChild(li).append(spanElement, newTodo);
+
+            deleteTodo();
         }
     });
 }
