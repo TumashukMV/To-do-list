@@ -1,21 +1,25 @@
     
     var ul = document.querySelector("ul");
+    var spans = document.getElementsByTagName("span");
+    /*var input = document.querySelector("input[type='text']");
     var container = document.querySelector("div");
     var lists = document.querySelectorAll("li");
-    var spans = document.getElementsByTagName("span");
-    var input = document.querySelector("input[type='text']");
     var saveBtn = document.querySelector(".save");
     var clearBtn = document.querySelector(".clear");
     var tipsBtn = document.querySelector(".tipBtn");
     var closeBtn = document.querySelector(".closebtn");
-    var overlay = document.getElementById("overlay");
+    var overlay = document.getElementById("overlay");*/
 
     import { ulCall } from "./ul.js";
     import { callPencil } from "./pencil.js";
     import { inputCall } from "./input.js";
     import { clearBtnCall } from "./clearBtn.js";
     import { saveBtnCall } from "./saveBtn.js";
+    import { closeBtnCall } from "./closeBtn.js";
+    import { tipsBtnCall } from "./tipsBtn.js";
 
+    closeBtnCall();
+    tipsBtnCall();
     saveBtnCall();
     clearBtnCall();
     inputCall();
@@ -36,16 +40,16 @@
         }
     }
 
-    tipsBtn.addEventListener("click", function(){
+    /*tipsBtn.addEventListener("click", function(){
         overlay.style.height = "100%";
     });
-
+    
     closeBtn.addEventListener("click", function(event){
         event.preventDefault();
         overlay.style.height = "0";
     });
 
-    /*pencil.addEventListener('click', function(){
+    pencil.addEventListener('click', function(){
         input.classList.toggle("display");
     })*/
 
