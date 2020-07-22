@@ -36,6 +36,15 @@
         }
     }
 
+    tipsBtn.addEventListener("click", function(){
+        overlay.style.height = "100%";
+    });
+
+    closeBtn.addEventListener("click", function(event){
+        event.preventDefault();
+        overlay.style.height = "0";
+    });
+
     /*pencil.addEventListener('click', function(){
         input.classList.toggle("display");
     })*/
