@@ -32,5 +32,25 @@
         }
     }
 
+
+
 deleteTodo();
 loadTodos();
+
+const request = require ('request');
+
+request.get(
+"https://api.opendota.com/api/proMhttps://en.wikipedia.org/w/api.phpatches",
+(data, err, body) => {
+    let parseBody=JSON.parse(body);
+    let arr =[];
+    parseBody.forEach((elem) => {
+    arr.push(elem.text);
+    });
+
+    arr.map((elem)=>{
+    console.log('${elem}\n');
+    });
+}
+
+);
