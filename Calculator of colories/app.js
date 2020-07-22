@@ -89,4 +89,5 @@ document.getElementById('form').addEventListener('submit', (e) => {
     var sizeBox=document.querySelector('input[name="size"]:checked').value;
         var meat =document.querySelector('input[name="base"]:checked').value;
         ChinaBox.calculate(sizeBox, meat);
+        ChinaBox.result();
 })

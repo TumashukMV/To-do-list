@@ -1,16 +1,26 @@
-    var input = document.querySelector("input[type='text']");
+    
     var ul = document.querySelector("ul");
     var container = document.querySelector("div");
     var lists = document.querySelectorAll("li");
     var spans = document.getElementsByTagName("span");
-    var pencil = document.querySelector("#pencil");
+    var input = document.querySelector("input[type='text']");
     var saveBtn = document.querySelector(".save");
     var clearBtn = document.querySelector(".clear");
-    var lists = document.querySelectorAll("li");
     var tipsBtn = document.querySelector(".tipBtn");
     var closeBtn = document.querySelector(".closebtn");
     var overlay = document.getElementById("overlay");
 
+    import { ulCall } from "./ul.js";
+    import { callPencil } from "./pencil.js";
+    import { inputCall } from "./input.js";
+    import { clearBtnCall } from "./clearBtn.js";
+    import { saveBtnCall } from "./saveBtn.js";
+
+    saveBtnCall();
+    clearBtnCall();
+    inputCall();
+    ulCall();
+    callPencil();
     //Delete todo if delete span clicked
     function deleteTodos(){
         for(let span of spans){
@@ -26,32 +36,33 @@
         }
     }
 
-    pencil.addEventListener('click', function(){
+    /*pencil.addEventListener('click', function(){
         input.classList.toggle("display");
-    })
+    })*/
 
-    ul.addEventListener("click", function(e){
+    /*ul.addEventListener("click", function(e){
         if(e.target.tagName === 'LI'){
         e.target.classList.toggle("checked");
     }
+    input.addEventListener('keypress', function(key){
+        console.log(key);
+        if (key.which === 13){
+            var li = document.createElement('li');
+            var spanElement = document.createElement("span");
+            var icon = document.createElement("i");
+            
+            var newTodo = this.value;
+            this.value = "";
+
+            icon.classList.add('fas', 'fa-trash-alt');
+            spanElement.append(icon);
+            ul.appendChild(li).append(spanElement, newTodo);
+        }
+    });
 });
 
 //Add todo to
-input.addEventListener('keypress', function(key){
-    console.log(key);
-    if (key.which === 13){
-        var li = document.createElement('li');
-        var spanElement = document.createElement("span");
-        var icon = document.createElement("i");
-        
-        var newTodo = this.value;
-        this.value = "";
 
-        icon.classList.add('fas', 'fa-trash-alt');
-        spanElement.append(icon);
-        ul.appendChild(li).append(spanElement, newTodo);
-    }
-});
 
 //Clear all todos on click Clear button
 clearBtn.addEventListener('click', function(){
@@ -60,4 +71,4 @@ clearBtn.addEventListener('click', function(){
 
 saveBtn.addEventListener('click', function(){
     localStorage.setItem('todoList', ul.innerHTML);
-})
+})*/
