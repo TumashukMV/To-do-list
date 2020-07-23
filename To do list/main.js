@@ -1,26 +1,24 @@
-import { keypress, ul_checked, pencil_show_hide, save_todo, clear_todo, tips, close, catFacts } from "./clickers.js";
+import { keypress, ul_checked, pencil_show_hide, save_todo, clear_todo, tips, close, fun } from "./clickers.js";
 import { cat_facts } from "./cat_facts.js";
 
 // Document ready
 $(document).ready(() => {
-    var spans = document.getElementsByTagName("span");
-    var ul = document.querySelector("ul");
-    var ul_cat_facts = document.querySelector('.cat-facts');
-    var ul_tips = document.querySelector('.tips');
-    
+  var spans = document.getElementsByTagName("span");
+  var ul = document.querySelector("ul");
+  var ul_cat_facts = document.querySelector('.cat-facts');
 
   // Initialize event listeners
-    keypress(deleteTodo);
-    ul_checked();
-    pencil_show_hide();
-    save_todo();
-    clear_todo();
-    tips();
-    close();
-    catFacts();
+  keypress(deleteTodo);
+  ul_checked();
+  pencil_show_hide();
+  save_todo();
+  clear_todo();
+  tips();
+  close();
+  fun();
 
   // Load cat facts data
-  cat_facts("https://cat-fact.herokuapp.com/facts/random?animal_type&amount=10")
+  cat_facts("https://cat-fact.herokuapp.com/facts/random?animal_type&amount=3")
     .done(data => {
       console.log(data);
       setFactsData(data);
@@ -28,6 +26,15 @@ $(document).ready(() => {
     .fail(err => {
       console.log(err);
     })
+
+  function setFactsData(cat_facts) {
+    cat_facts.map(elem => {
+      let li = document.createElement('li');
+      li.innerText = elem.text;
+      ul_cat_facts.append(li);
+    })
+    console.log(ul_cat_facts);
+  }
 
   // Delete todo if delete span clicked
   function deleteTodo() {
@@ -44,20 +51,6 @@ $(document).ready(() => {
       ul.innerHTML = localStorage.getItem("todoList");
     }
   }
-
-  function setFactsData(cat_facts) {
-    cat_facts.map(elem => {
-      ul_cat_facts.append(document.createElement('li'), elem.text)
-    })
-    console.log(ul_cat_facts);
-  }
-
-  function setFactsData(cat_facts) {
-    cat_facts.map(elem => {
-    ul_tips.append(document.createElement('li'), elem.text)
-    })
-    console.log(ul_cat_facts);
-    }
 
   deleteTodo();
   loadTodos();
