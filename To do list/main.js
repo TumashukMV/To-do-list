@@ -1,20 +1,23 @@
-import { keypress, ul_checked, pencil_show_hide, save_todo, clear_todo, tips, close } from "./clickers.js";
+import { keypress, ul_checked, pencil_show_hide, save_todo, clear_todo, tips, close, catFacts } from "./clickers.js";
 import { cat_facts } from "./cat_facts.js";
 
 // Document ready
 $(document).ready(() => {
-  var spans = document.getElementsByTagName("span");
-  var ul = document.querySelector("ul");
-  var ul_cat_facts = document.querySelector('.cat-facts');
+    var spans = document.getElementsByTagName("span");
+    var ul = document.querySelector("ul");
+    var ul_cat_facts = document.querySelector('.cat-facts');
+    var ul_tips = document.querySelector('.tips');
+    
 
   // Initialize event listeners
-  keypress(deleteTodo);
-  ul_checked();
-  pencil_show_hide();
-  save_todo();
-  clear_todo();
-  tips();
-  close();
+    keypress(deleteTodo);
+    ul_checked();
+    pencil_show_hide();
+    save_todo();
+    clear_todo();
+    tips();
+    close();
+    catFacts();
 
   // Load cat facts data
   cat_facts("https://cat-fact.herokuapp.com/facts/random?animal_type&amount=10")
@@ -48,6 +51,13 @@ $(document).ready(() => {
     })
     console.log(ul_cat_facts);
   }
+
+  function setFactsData(cat_facts) {
+    cat_facts.map(elem => {
+    ul_tips.append(document.createElement('li'), elem.text)
+    })
+    console.log(ul_cat_facts);
+    }
 
   deleteTodo();
   loadTodos();

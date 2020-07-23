@@ -6,6 +6,15 @@ var clearBtn = document.querySelector(".clear");
 var tipsBtn = document.querySelector(".tipBtn");
 var closeBtn = document.querySelector(".closebtn");
 var overlay = document.getElementById("overlay");
+var catFactsBtn = document.querySelector(".catFactsBtn");
+//var tipsCatFacts = document.getElementById(".tipsCatFacts");
+var tipsCatFactsOverlay = document.getElementById(".tipsCatFactsOverlay");
+
+export const catFacts = () => {
+    catFactsBtn.addEventListener("click", function () {
+        tipsCatFactsOverlay.style.height = "100%";
+    });
+  };
 
 export function keypress(callback) {
   // Add todo element to todo list
