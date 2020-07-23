@@ -1,56 +1,54 @@
-    
-    var ul = document.querySelector("ul");
-    var spans = document.getElementsByTagName("span");
+import { keypress, ul_checked, pencil_show_hide, save_todo, clear_todo, tips, close } from "./clickers.js";
+import { cat_facts } from "./cat_facts.js";
 
-    import { ulCall } from "./ul.js";
-    import { callPencil } from "./pencil.js";
-    import { inputCall } from "./input.js";
-    import { clearBtnCall } from "./clearBtn.js";
-    import { saveBtnCall } from "./saveBtn.js";
-    import { closeBtnCall } from "./closeBtn.js";
-    import { tipsBtnCall } from "./tipsBtn.js";
+// Document ready
+$(document).ready(() => {
+  var spans = document.getElementsByTagName("span");
+  var ul = document.querySelector("ul");
+  var ul_cat_facts = document.querySelector('.cat-facts');
 
-    closeBtnCall();
-    tipsBtnCall();
-    saveBtnCall();
-    clearBtnCall();
-    inputCall();
-    ulCall();
-    callPencil();
-    //Delete todo if delete span clicked
-    function deleteTodo(){
-        for(let span of spans){
-            span.addEventListener('click', function(){
-                span.parentElement.remove();
-            })
-        }
+  // Initialize event listeners
+  keypress(deleteTodo);
+  ul_checked();
+  pencil_show_hide();
+  save_todo();
+  clear_todo();
+  tips();
+  close();
+
+  // Load cat facts data
+  cat_facts("https://cat-fact.herokuapp.com/facts/random?animal_type&amount=10")
+    .done(data => {
+      console.log(data);
+      setFactsData(data);
+    })
+    .fail(err => {
+      console.log(err);
+    })
+
+  // Delete todo if delete span clicked
+  function deleteTodo() {
+    for (let span of spans) {
+      span.addEventListener("click", function () {
+        console.log(span.parentElement);
+        span.parentElement.remove();
+      });
     }
+  }
 
-    function loadTodos(){
-        if(localStorage.getItem("todoList")){
-            ul.innerHTML = localStorage.getItem("todoList")
-        }
+  function loadTodos() {
+    if (localStorage.getItem("todoList")) {
+      ul.innerHTML = localStorage.getItem("todoList");
     }
+  }
 
+  function setFactsData(cat_facts) {
+    cat_facts.map(elem => {
+      ul_cat_facts.append(document.createElement('li'), elem.text)
+    })
+    console.log(ul_cat_facts);
+  }
 
-
-deleteTodo();
-loadTodos();
-
-const request = require ('request');
-
-request.get(
-"https://api.opendota.com/api/proMhttps://en.wikipedia.org/w/api.phpatches",
-(data, err, body) => {
-    let parseBody=JSON.parse(body);
-    let arr =[];
-    parseBody.forEach((elem) => {
-    arr.push(elem.text);
-    });
-
-    arr.map((elem)=>{
-    console.log('${elem}\n');
-    });
-}
-
-);
+  deleteTodo();
+  loadTodos();
+});
